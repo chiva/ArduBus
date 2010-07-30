@@ -1,0 +1,13 @@
+Version 0.3 Beta (released xx-xx-2010)
+
+IMPROVED: Serial new line call
+
+Version 0.2 Beta (released 27-6-2010)
+
+FIXED: Enter key not creating a new line, so the prompt and command where overwritten
+CHANGED: Echo activated by default
+FIXED: Backspace key not deleting stored character
+FIXED: Backspace key not being echoed
+FIXED: Deleting prompt
+
+If you find a bug, please, log it to the Google Code project page: http://code.google.com/p/i2c-wushu/
