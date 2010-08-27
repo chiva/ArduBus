@@ -20,7 +20,7 @@
 
 #include <Wire.h>
 #define BUFFSIZ 50                     //Tamaño del buffer del puerto serie lo suficientemente grande
-#define BAUD 9600                      //Velocidad puerto serie
+#define BAUD 115200                    //Velocidad puerto serie
 #define MCU_FREQ 16000000L             //Frecuencia de funcionamiento del microcontrolador
 boolean error;
 boolean echo = true;                   //Hacer echo de la entrada del puerto serie
@@ -34,9 +34,9 @@ void setup()
   Wire.begin();                                                  //Iniciamos el bus I2C
 
   Serial.println("");                                            //Mensaje de bienvenida
-  Serial.println("ArduBus v0.3 BETA");
-  //Serial.println("KungFu Labs - http://www.kungfulabs.com");
-  //Serial.println("ArduBus  Copyright (C) 2010  Santiago Reig");
+  Serial.println("ArduBus v0.3");
+  Serial.println("KungFu Labs - http://www.kungfulabs.com");
+  Serial.println("ArduBus Copyright (C) 2010  Santiago Reig");
   Serial.println("");
   selectSpeed();
   Serial.println("202 I2C READY");
@@ -126,12 +126,12 @@ void startWork(){
     else Serial.println("Debug desactivado");
     return;
   }
-  while (parseptr[0] == '{'){                                    //Mientras haya un comando nuevo...
-    parseptr++;                                                  //Avanzamos para analizar el siguiente caracter
-    if (debug){
+  if (debug){
       Serial.print("Procesando cadena: ");
       Serial.println(buffer);
-    }
+  }
+  while (parseptr[0] == '{'){                                    //Mientras haya un comando nuevo...
+    parseptr++;                                                  //Avanzamos para analizar el siguiente caracter
     Serial.println("210 I2C START CONDITION");
     address = parseArgument();                                   //El primer argumento es la direccion
     if (error){
